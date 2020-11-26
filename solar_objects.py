@@ -41,6 +41,8 @@ class Star:
     image = None
     """Изображение звезды"""
 
+    stats = []
+
 
 class Planet:
     """Тип данных, описывающий планету.
@@ -80,3 +82,5 @@ class Planet:
 
     image = None
     """Изображение планеты"""
+
+    stats = []

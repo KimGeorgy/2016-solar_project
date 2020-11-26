@@ -57,6 +57,7 @@ def parse_star_parameters(line, star):
     star.Vx = float(temp[6])
     star.Vy = float(temp[7])
 
+
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
     Предполагается такая строка:
@@ -82,7 +83,7 @@ def parse_planet_parameters(line, planet):
     planet.Vy = float(temp[7])
 
 
-def write_space_objects_data_to_file(output_filename, space_objects):
+def write_space_objects_data_to_file(space_objects):
     """Сохраняет данные о космических объектах в файл.
     Строки должны иметь следующий формат:
     Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
@@ -93,21 +94,20 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     **output_filename** — имя входного файла
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
+    with open('stats.txt', 'w') as out_file:
         for obj in space_objects:
             temp = []
             temp.append(obj.type)
+            temp.append(obj.stats)
             temp.append(obj.R)
             temp.append(obj.color)
-            temp.appent(obj.m)
+            temp.append(obj.m)
             temp.append(obj.x)
             temp.append(obj.y)
             temp.append(obj.Vx)
             temp.append(obj.Vy)
-            str = " ".join(temp)
-            print(str, file = output_filename)
+            print(str(temp), file=out_file)
 
-# FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
